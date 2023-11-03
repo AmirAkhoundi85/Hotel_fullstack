@@ -1,0 +1,17 @@
+:root {
+  --my-primary: #335c67;
+  --my-secondry: #fff3b0;
+  --orange: #e09f3e;
+  --red: #9e2a2b;
+  --dark-red: #540b0e;
+}
+
+header {
+  background-color: var(--my-primary);
+}
+.btn-search {
+  background-color: var(--red) !important;
+  border: 1.5px solid #dee2e6 !important;
+  font-size: 1.5rem !important;
+  line-height: 0px;
+}
