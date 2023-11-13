@@ -1,7 +1,14 @@
 // crud hotel
 
+const Hotel = require("../models/Hotel");
+
 const getAllHotels = (req, res) => {
-  return res.send("All Hotel");
+  try {
+    const hotels = Hotel.find({});
+    return res.status(200).send(hotels);
+  } catch (error) {
+    return res.status(500).send("Internal Server Error: " + error);
+  }
 };
 const getSingleHotel = (req, res) => {
   return res.send("Single Hotel");
