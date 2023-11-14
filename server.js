@@ -5,7 +5,8 @@ const indexRouter = require("./routes/indexRouter");
 const categoryRouter = require("./routes/categoryRouter");
 const mongoose = require("mongoose");
 
-const port = 5001;
+const port = 5003;
+app.use(express.json())
 app.use(categoryRouter);
 app.use(hotelRouter);
 app.use(indexRouter);
