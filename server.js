@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const port = 5003;
-
 app.get("/", (req, res) => {
   res.send("Root route");
 });
