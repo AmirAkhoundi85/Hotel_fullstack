@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 const indexRouter = require("./routes/indexRouter");
 const mongoose = require("mongoose");
+const cors= require("cors")
 
 
-const port = 5001;
+app.use(cors());
 app.use(express.json())
 app.use("/api",indexRouter);
 
@@ -15,6 +16,8 @@ mongoose
     console.error(`Error connecting to the database: ${err}`);
   });
 
+
+  const port = 5001;
 app.listen(port, () => {
   console.log(`Server is running on port:${port}`);
 });

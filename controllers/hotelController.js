@@ -1,5 +1,3 @@
-// crud hotel
-
 const Hotel = require("../models/Hotel");
 
 const getAllHotels = async (req, res) => {

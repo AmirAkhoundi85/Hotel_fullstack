@@ -1,8 +1,15 @@
 const mongoose = require("mongoose");
 
-const Category = mongoose.Schema({
-    name: { type: String, require: true },
-    description: { type: String }
+const CategorySchema = mongoose.Schema({
+  name: { type: String, require: true },
+  description: { type: String },
 });
 
-module.exports = mongoose.model('Category', Category);
+CategorySchema.set("toJSON", {
+  transform: (doc, ret) => {
+    ret.id = ret._id.toString();
+    delete ret._id;
+    delete ret.__v;
+  },
+});
+module.exports = mongoose.model("Category", CategorySchema);

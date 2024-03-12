@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const User = mongoose.Schema(
+const UserSchema = mongoose.Schema(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -10,7 +10,26 @@ const User = mongoose.Schema(
   },
   {
     timestamps: true,
+    // toJSON: {
+    //   transform: function (doc, ret) {
+    //      ret.id = ret._id.toString();
+    //      delete ret._id;
+    //      delete ret.__v;
+    //   },
+    // },
   }
 );
-module.exports = mongoose.model('User', User);
+
+
+UserSchema.set("toJSON", {
+  transform:  (doc, ret)=> {
+    ret.id = ret._id.toString();
+    delete ret._id;
+    delete ret.__v;
+    delete password;
+  },
+});
+
+
+module.exports = mongoose.model("User", UserSchema);
 

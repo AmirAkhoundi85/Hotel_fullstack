@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Hotel  = mongoose.Schema({
+const HotelSchema  = mongoose.Schema({
     name: { type : String, require : true },
     phoneNumber:{type:String},
     address:{type:String},
@@ -13,4 +13,12 @@ const Hotel  = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Hotel', Hotel);
+HotelSchema.set("toJSON", {
+  transform: (doc, ret) => {
+    ret.id = ret._id.toString();
+    delete ret._id;
+    delete ret.__v;
+  },
+});
+
+module.exports = mongoose.model("Hotel", HotelSchema);
