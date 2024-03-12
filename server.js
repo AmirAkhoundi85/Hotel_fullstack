@@ -1,17 +1,12 @@
 const express = require("express");
 const app = express();
-
-const hotelRouter = require("./routes/hotelRoutes");
 const indexRouter = require("./routes/indexRouter");
-const categoryRouter = require("./routes/categoryRouter");
 const mongoose = require("mongoose");
 
 
 const port = 5001;
 app.use(express.json())
-app.use(categoryRouter);
-app.use(hotelRouter);
-app.use(indexRouter);
+app.use("/api",indexRouter);
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/hotel_db")
