@@ -17,7 +17,7 @@ const getSingleCategory =async (req, res) => {
         .status(404)
         .send(`The category with the id ${id} does not exist.`);
     }
-    return res.status(200).send(hotel);
+    return res.status(200).send(category);
   } catch (error) {
     return res.status(500).send("Internal Server Error: " + error);
   }

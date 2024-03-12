@@ -1,17 +1,20 @@
 const mongoose = require("mongoose");
 
-const HotelSchema  = mongoose.Schema({
-    name: { type : String, require : true },
-    phoneNumber:{type:String},
-    address:{type:String},
-    city:{type:String},
-    state:{type:String},
-    country:{type:String},
-    rate:{type:Number},
-},{
-    timestamps:true
-});
-
+const HotelSchema = mongoose.Schema(
+  {
+    name: { type: String, require: true },
+    phoneNumber: { type: String },
+    address: { type: String },
+    city: { type: String },
+    state: { type: String },
+    country: { type: String },
+    rate: { type: Number },
+    categoryId: { type: mongoose.Types.ObjectId, ref: "Category" },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 HotelSchema.set("toJSON", {
   transform: (doc, ret) => {

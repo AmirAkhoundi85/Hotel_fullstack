@@ -1,3 +1,4 @@
+const Category = require("../models/Category");
 const Hotel = require("../models/Hotel");
 
 const getAllHotels = async (req, res) => {
@@ -24,16 +25,25 @@ const getSingleHotel = async (req, res) => {
 };
 const createHotel = async (req, res) => {
   try {
-    const { name, address, phoneNumber, city, state, country } = req.body;
+    const { name, address, phoneNumber, city, state, country, categoryId } = req.body;
+    const category = await Category.findById(categoryId);
+    if (!category) {
+      return res.status(404).send("Category Not Found");
+    }
     const newHotel = new Hotel({
-      name: name,
-      address: address,
-      phoneNumber: phoneNumber,
-      city: city,
-      state: state,
-      country: country,
+      name,
+      address,
+      phoneNumber ,
+      city,
+      state,
+      country,
+      categoryId
     });
     await newHotel.save();
+    
+    category.hotels.push(newHotel.id)
+    await category.save()
+
     return res.status(201).send(newHotel);
   } catch (error) {
     return res.status(500).send("Internal Server Error: " + error);
