@@ -50,11 +50,11 @@ const createHotel = async (req, res) => {
   }
 };
 
-const updateHotel = (req, res) => {
+const updateHotel = async(req, res) => {
   try {
     const { id } = req.params;
     const { name, address, phoneNumber, city, state, country } = req.body;
-    let hotel = Hotel.findByIdAndUpdate(id, {
+    let hotel =await Hotel.findByIdAndUpdate(id, {
       name,
       address,
       phoneNumber,
@@ -63,21 +63,33 @@ const updateHotel = (req, res) => {
       country,
     });
     if (!hotel) {
-      return res.status(404).send(`The hotel with the id ${id} does not exist`);
-    } else {
-      return res.status(200).send(hotel);
+      return res.status(404).json({ error: "Hotel not found" });
     }
+    return res.status(200).send({ message: "Updated Successfully!" , hotel});
   } catch (error) {
-    return res.status(500).send("Internal Server Error: " + error);
+    return res.status(500).send({ error: `Interval Server error: ${error}` });
   }
 };
-const deleteHotel = (req, res) => {
+const deleteHotel =async (req, res) => {
   try {
     const { id } = req.params;
-    const hotel = Hotel.findByIdAndDelete(id);
-    return res.status(200).send("success");
+    const hotel = await Hotel.findByIdAndDelete(id);
+
+    if (!hotel) {
+      return res.status(404).json({ error: "Hotel not found" });
+    }
+   
+    const categories = await Category.find({ hotels: id });
+
+    for (const category of categories) {
+      category.hotels = category.hotels.filter(
+        (hotelId) => hotelId.toString() !== id
+      );
+      await category.save(); 
+    }
+    return res.status(200).send({ message: "Deleted Successfully" });
   } catch (error) {
-    return res.status(500).send("Internal Server Error: " + error);
+    return res.status(500).send({error:`Interval Server error: ${error}`});
   }
 };
 module.exports = {

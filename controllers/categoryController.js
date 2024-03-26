@@ -43,11 +43,51 @@ const createCategory = async (req, res) => {
   }
 };
 
-const updateCategory = (req, res) => {
-  return res.send("Update category");
+const updateCategory = async(req, res) => {
+try {
+   const { id } = req.params;
+   const { name,description, hotels } = req.body;
+  if (!name) {
+    return res.status(400).send({ error: "Name is requaired" });
+  }
+ const updatedCategory = await Category.findByIdAndUpdate(
+   id,
+   {
+     name,
+     description,
+     hotels,
+   },
+   { new: true }
+ );
+
+ if (!updatedCategory) {
+   return res.status(404).send({ error: "Category not found" });
+ }
+
+ return res.send({ message: "Category updated successfully", updatedCategory });
+} catch (error) {
+  return res.status(500).send({ error: "Internal server error: "  + error });
+}
 };
-const deleteCategory = (req, res) => {
-  return res.send("Delete category");
+const deleteCategory = async(req, res) => {
+ try {
+   const { id } = req.params;
+   // const category= await  Category.findById(id);
+   //   if (!category) {
+   //     return res.status(404).send("Category not found");
+   //   }
+   // const result= await Category.delete(id);
+   // if (!result) {
+   //   return res.status(400).send("Deleted the category failed");
+   // }
+   const deleteCategory = await Category.findByIdAndDelete(id);
+   if (!deleteCategory) {
+    return res.status(404).send({ error: "Category not found" });
+   }
+   return res.status(200).send({ message: "Deleted the category success" });
+ } catch (error) {
+  return res.status(500).send({ error: "Internal server error: "  + error });
+ }
 };
 
 module.exports = {

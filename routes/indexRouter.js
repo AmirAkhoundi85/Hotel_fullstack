@@ -8,6 +8,7 @@ const indexRouter = express.Router();
 indexRouter.use(hotelRouter);
 indexRouter.use(categoryRouter);
 indexRouter.get("/", index);
-indexRouter.get("/*", page404);
+
+indexRouter.use("/*", page404);
 
 module.exports = indexRouter;

@@ -11,7 +11,7 @@ const hotelRouter = express.Router();
 hotelRouter.get("/hotels", getAllHotels);
 hotelRouter.get("/hotels/:id", getSingleHotel);
 hotelRouter.post("/hotels", createHotel);
-hotelRouter.put("/hotels", updateHotel);
-hotelRouter.delete("/hotels", deleteHotel);
+hotelRouter.put("/hotels/:id", updateHotel);
+hotelRouter.delete("/hotels/:id", deleteHotel);
 
 module.exports = hotelRouter;
