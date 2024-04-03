@@ -4,10 +4,10 @@ import CategoriesList from '../components/category/CategoriesList'
 const Home = () => {
  
   return (
-    <div>
-        <CategoriesList/>
+    <div className="min-vh-100">
+      <CategoriesList />
     </div>
-  )
+  );
 }
 
 export default Home

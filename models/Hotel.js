@@ -10,7 +10,10 @@ const HotelSchema = mongoose.Schema(
     city: { type: String },
     state: { type: String },
     country: { type: String },
+    price:  { type: Number, required: true },
     rate: { type: Number },
+    description: { type: String },
+    images:[],
     categoryId: { type: mongoose.Types.ObjectId, ref: "Category" },
   },
   {

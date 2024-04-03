@@ -25,7 +25,7 @@ const getSingleHotel = async (req, res) => {
 };
 const createHotel = async (req, res) => {
   try {
-    const { name, address, phoneNumber, city, state, country, categoryId } = req.body;
+    const { name, address, phoneNumber, city, state, country,price, categoryId } = req.body;
     const category = await Category.findById(categoryId);
     if (!category) {
       return res.status(404).send("Category Not Found");
@@ -37,6 +37,7 @@ const createHotel = async (req, res) => {
       city,
       state,
       country,
+      price,
       categoryId
     });
     await newHotel.save();

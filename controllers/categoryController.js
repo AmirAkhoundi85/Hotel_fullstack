@@ -11,7 +11,8 @@ const getAllCategory = async (req, res) => {
 const getSingleCategory =async (req, res) => {
   try {
     const { id } = req.params;
-    const category = await Category.findById(id);
+    const category = await Category.findById(id).populate("hotels");
+
     if (!category) {
       return res
         .status(404)
