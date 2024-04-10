@@ -1,12 +1,15 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import HotelsList from '../components/hotels/HotelsList';
+import Layout from '../components/layout';
 
 const SingleCategory = () => {
    
 
   return (
-    <HotelsList/>
+    <Layout>
+      <HotelsList />
+    </Layout>
   );
 }
 

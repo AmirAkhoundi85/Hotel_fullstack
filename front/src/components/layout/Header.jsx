@@ -1,6 +1,6 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
-import logo from "../assets/images/logo.svg";
+import logo from "../../assets/images/logo.svg";
 import { BiSearch } from "react-icons/bi";
 
 const Header = () => {

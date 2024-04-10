@@ -15,3 +15,9 @@ header {
   font-size: 1.5rem !important;
   line-height: 0px;
 }
+.hotel-card{
+  height:19rem!important;
+}
+.hotel-card img{
+  height:50%!important;
+}

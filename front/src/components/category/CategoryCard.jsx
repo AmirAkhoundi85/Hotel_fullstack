@@ -1,12 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const CategoryCard = ({id,name, description}) => {
+const CategoryCard = ({id,image, name, description}) => {
   return (
     <div className="col">
-      <Link to={`/category/${id}`} className="p-4 bg-white rounded shadow text-decoration-none">
-        <h2 className="font-semibold text-gray-700">{name}</h2>
-        <p className="text-muted">{description} </p>
+      <Link
+        to={`/category/${id}`}
+        className=" bg-white rounded shadow text-decoration-none d-block"
+      >
+        <img src={image} alt="" className="w-100" />
+        <div className="p-4">
+          <h4 className="font-semibold text-gray-700">{name}</h4>
+          <p className="text-muted">{description} </p>
+        </div>
       </Link>
     </div>
   );

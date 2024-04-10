@@ -1,16 +1,15 @@
 import './assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './components/layout/Header';
 import RoutesMap from './routes/RoutesMap';
-import Footer from './components/Footer';
+import Footer from './components/layout/Footer';
 import "bootstrap/dist/css/bootstrap.min.css"
+import "react-image-gallery/styles/css/image-gallery.css";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <RoutesMap/>
-      <Footer/>
     </BrowserRouter>
   )
 }

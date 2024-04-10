@@ -1,12 +1,13 @@
 import React from 'react'
 import CategoriesList from '../components/category/CategoriesList'
+import Layout from '../components/layout';
 
 const Home = () => {
  
   return (
-    <div className="min-vh-100">
+    <Layout>
       <CategoriesList />
-    </div>
+    </Layout>
   );
 }
 

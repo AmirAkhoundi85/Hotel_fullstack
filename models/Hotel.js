@@ -13,7 +13,7 @@ const HotelSchema = mongoose.Schema(
     price:  { type: Number, required: true },
     rate: { type: Number },
     description: { type: String },
-    images:[],
+    images:[{type: String}],
     categoryId: { type: mongoose.Types.ObjectId, ref: "Category" },
   },
   {
