@@ -15,9 +15,28 @@ header {
   font-size: 1.5rem !important;
   line-height: 0px;
 }
-.hotel-card{
-  height:19rem!important;
+.hotel-card {
+  height: 19rem !important;
 }
-.hotel-card img{
-  height:50%!important;
+
+.hotel-card img {
+  height: 50% !important;
+}
+
+.category-card {
+  height: 16rem;
+}
+
+.category-card img {
+  height: 50% !important;
+}
+
+/* /////////////// */
+
+.top-rate-hotels a {
+  text-decoration: none;
+}
+
+.top-rate-hotels a:hover {
+  text-decoration: underline;
 }

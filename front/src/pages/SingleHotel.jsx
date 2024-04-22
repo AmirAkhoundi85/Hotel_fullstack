@@ -19,6 +19,18 @@ const SingleHotel = () => {
     rate: "",
     price: "",
   });
+  const [rate, setRate] = useState([]);
+
+  const manageRate = (rate) => {
+    const rateArray = [];
+    for (let i = 0; i < rate; i++) {
+      rateArray.push(1);
+    }
+    for (let i = 0; i < 10 - rate; i++) {
+      rateArray.push(0);
+    }
+    return rateArray;
+  };
   const [images, setImages] = useState([]);
   useEffect(() => {
     const getHotel = async () => {
@@ -26,6 +38,7 @@ const SingleHotel = () => {
         `http://localhost:5001/api/hotels/${idHotel}`
       );
       setHotelInfo(res.data);
+      setRate(manageRate(res.data.rate));
 
       const imagesData = res.data.images.map((image) => ({
         original: image,
@@ -35,7 +48,8 @@ const SingleHotel = () => {
     };
 
     getHotel();
-  }, []);
+  }, [idHotel]);
+
   return (
     <Layout>
       <div>
@@ -51,7 +65,16 @@ const SingleHotel = () => {
         </p>
         <p>{hotelInfo.phoneNumber}</p>
         <p>
-          <strong>rate:</strong> {hotelInfo.rate}
+          <strong>rate:</strong>
+          <span className="text-warning">
+            {rate.map((item) =>
+              item ? (
+                <i class="bi bi-star-fill"></i>
+              ) : (
+                <i class="bi bi-star"></i>
+              )
+            )}
+          </span>
         </p>
         <p>{hotelInfo.description}</p>
         <p>
@@ -72,10 +95,3 @@ const SingleHotel = () => {
 };
 
 export default SingleHotel;
-
-// "images": [
-//             "http://localhost:5001/images/hotels/side-lohja1.webp",
-//             "http://localhost:5001/images/2.webp"
-//         ]
-
-//  "image": "http://localhost:5001/images/categories/cabins.webp",

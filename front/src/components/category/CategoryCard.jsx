@@ -6,7 +6,7 @@ const CategoryCard = ({id,image, name, description}) => {
     <div className="col">
       <Link
         to={`/category/${id}`}
-        className=" bg-white rounded shadow text-decoration-none d-block"
+        className="category-card bg-white rounded shadow text-decoration-none d-block"
       >
         <img src={image} alt="" className="w-100" />
         <div className="p-4">

@@ -18,19 +18,17 @@ const HotelsList = () => {
       );
       setCategory(res.data);
     };
-
     getCategory();
   }, []);
   return (
     <div>
       <div className="text-center">
-
         <h1>{category.name}</h1>
         <p>{category.description}</p>
       </div>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {category.hotels.length ? (
-          category.hotels.map((item) => <HotelCard key={item._id} {...item} />)
+          category.hotels.map((item) => <HotelCard key={item.id} {...item} />)
         ) : (
           <div className=""> No any result</div>
         )}
