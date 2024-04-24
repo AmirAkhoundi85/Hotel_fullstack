@@ -3,6 +3,7 @@ const app = express();
 const indexRouter = require("./routes/indexRouter");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 
 app.use(cors());
 app.use(express.json());
@@ -15,9 +16,20 @@ mongoose
     console.error(`Error connecting to the database: ${err}`);
   });
 
-app.use(express.static("public"));
+// app.use(express.static("/public"));
+app.use(express.static(path.join(__dirname, "front/build")));
 
 const port = 5001;
 app.listen(port, () => {
   console.log(`Server is running on port:${port}`);
 });
+
+
+
+
+
+
+
+
+/// root ---> npm i
+/// root ---> nmp run dev

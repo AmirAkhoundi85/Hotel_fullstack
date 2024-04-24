@@ -5,6 +5,28 @@
   --red: #9e2a2b;
   --dark-red: #540b0e;
 }
+.text-dark-red{
+  color: var(--dark-red);
+}
+.text-red{
+  color: var(--red);
+}
+.text-orange{
+  color: var(--orange);
+}
+.text-my-primary{
+  color: var(--my-primary);
+}
+.bg-orange{
+  background: var(--orange)!important;
+}
+.bg-red{
+  background: var(--red)!important;
+}
+
+main{
+  background-color: var(--my-secondry);
+}
 
 header {
   background-color: var(--my-primary);
@@ -39,4 +61,11 @@ header {
 
 .top-rate-hotels a:hover {
   text-decoration: underline;
+}
+
+footer{
+  background-color: var(--my-primary);
+}
+footer .nav-link{
+  color: var(--orange);
 }

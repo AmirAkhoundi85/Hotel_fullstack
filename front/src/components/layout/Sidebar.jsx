@@ -29,12 +29,12 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="p-4 shadow-lg rounded">
+    <div className="p-4 shadow-lg rounded bg-white">
       <h4>Top Rate Hotels</h4>
       <ul className="top-rate-hotels mt-4">
         {topRateHotels.map((item) => (
           <li className="mb-2" key={item.id}>
-            <Link to={`/hotel/${item.id}`}>{item.name}</Link>
+            <Link to={`/hotel/${item.id}`} className="text-red">{item.name}</Link>
           </li>
         ))}
       </ul>
@@ -43,7 +43,7 @@ const Sidebar = () => {
       <ul className="top-rate-hotels mt-4">
         {lowPiceHotels.map((item) => (
           <li className="mb-2" key={item.id}>
-            <Link to={`/hotel/${item.id}`}>{item.name}</Link>
+            <Link to={`/hotel/${item.id}`} className="text-red">{item.name}</Link>
           </li>
         ))}
       </ul>

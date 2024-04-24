@@ -53,7 +53,7 @@ const SingleHotel = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-center">{hotelInfo.name}</h1>
+        <h1 className="text-center mb-5">{hotelInfo.name}</h1>
         <div className="row row-cols-1 row-cols-md-2 justify-content-center">
           <div className="col">
             <ImageGallery items={images} />

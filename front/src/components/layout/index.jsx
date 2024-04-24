@@ -7,11 +7,13 @@ const Layout = ({ children, hasSidebar = true }) => {
   return (
     <>
       <Header />
-      <main className="min-vh-100 container my-5">
-        <div className="row">
-          <div className="col-12 col-md-8 col-lg-9">{children}</div>
-          <div className="col-12 col-md-4 col-lg-3">
-            {hasSidebar && <Sidebar />}
+      <main className="min-vh-100 pt-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-8 col-lg-9">{children}</div>
+            <div className="col-12 col-md-4 col-lg-3">
+              {hasSidebar && <Sidebar />}
+            </div>
           </div>
         </div>
       </main>

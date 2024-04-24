@@ -10,7 +10,7 @@ const CategoryCard = ({id,image, name, description}) => {
       >
         <img src={image} alt="" className="w-100" />
         <div className="p-4">
-          <h4 className="font-semibold text-gray-700">{name}</h4>
+          <h4 className="font-semibold text-gray-700 ">{name}</h4>
           <p className="text-muted">{description} </p>
         </div>
       </Link>
